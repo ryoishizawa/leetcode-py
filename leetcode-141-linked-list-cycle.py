@@ -8,34 +8,18 @@ class ListNode:
 
 
 class Solution:
-    def __init__(self, pos):
-        self.size = 0
-        self.pos = pos
-
     def hasCycle(self, head: ListNode) -> bool:
-        while head is not None:
-            self.size = self.size + 1
-            head = head.next
-        if self.size - 1 > self.pos >= 0:
-            return True
-        else:
+        if head is None or head.next is None:
             return False
+        slowNode = head
+        fastNode = head.next
+        while slowNode is not None:
+            if fastNode is None or fastNode.next is None:
+                return False
+            if slowNode is fastNode:
+                return True
+            slowNode = slowNode.next
+            fastNode = fastNode.next.next
+        return True
 
 
-if __name__ == '__main__':
-    inputArray = input()
-    pos = int(input())
-
-    firstNode = None
-    prevNode = None
-    for item in inputArray:
-        if prevNode is None:
-            firstNode = ListNode(item)
-            prevNode = firstNode
-        else:
-            node = ListNode(item)
-            prevNode.next = node
-            prevNode = node
-
-    solution = Solution(pos)
-    print(solution.hasCycle(firstNode))
