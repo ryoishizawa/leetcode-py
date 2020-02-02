@@ -1,4 +1,4 @@
-```
+'''
 Use recursion.
 
 Time Complexity: O(n^2)
@@ -6,7 +6,7 @@ Time Complexity: O(n^2)
 Can be improved:
 - Add Exeption if there's no match
 - Use Hash table to decrease time complexity
-```
+'''
 class Solution:
     def __init__(self):
         self._firstIndex = 0
